@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "ubuntu/bionic64"
+  config.vm.box = "ubuntu/focal64"
 
   #config.vm.network :forwarded_port, guest: 80, host: 8001
   # Create a private network, which allows host-only access to the machine using a specific IP.

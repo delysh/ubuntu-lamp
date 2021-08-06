@@ -31,27 +31,33 @@ sudo apt -y update
 sudo apt -y upgrade
 
 # install apache
+echo "INSTALLING APACHE"
 sudo apt install -y apache2
 
 # removing all old php dependencies (not needed on fresh setup).
 #sudo apt-get remove -y php*
 
-# installing php7.3 and php modules
-sudo apt-get install -y php7.3 php7.3-cli php7.3-common libapache2-mod-php7.3 php7.3-fpm php7.3-curl php7.3-gd php7.3-bz2 php7.3-json php7.3-tidy php7.3-mbstring php-redis php-memcached php7.3-sqlite3 php7.3-xml php7.3-zip php7.3-readline php7.3-intl php7.3-bcmath php7.3-xmlrpc php7.3-recode php7.3-imagick php7.3-mysql
+# installing php and php modules
+echo "INSTALLING PHP"
+sudo apt install -y php php-cli php-common libapache2-mod-php php-fpm php-curl php-gd php-bz2 php-json php-tidy php-mbstring php-redis php-memcached php-sqlite3 php-xml php-zip php-readline php-intl php-bcmath php-xmlrpc php-imagick php-mysql
 
-# install mysql and give password to installer
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $PASSWORD"
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password $PASSWORD"
 
-sudo apt install -y mysql-server
-
-# install phpmyadmin and give password(s) to installer
-# for simplicity I'm using the same password for mysql and phpmyadmin
+## install phpmyadmin and give password(s) to installer
+## for simplicity I'm using the same password for mysql and phpmyadmin
 sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/dbconfig-install boolean true"
 sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/app-password-confirm password $PASSWORD"
 sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/admin-pass password $PASSWORD"
 sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/mysql/app-pass password $PASSWORD"
 sudo debconf-set-selections <<< "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2"
+#
+
+# install mysql and give password to installer
+echo "INSTALLING MySQL"
+sudo apt install -y mysql-server
+
+echo "INSTALLING PHPMyAdmin"
 sudo apt install -y phpmyadmin
 
 # setup hosts file
