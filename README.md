@@ -7,8 +7,8 @@ Simple LAMP environment inside Vagrant box. Based on official `ubuntu/focal64` b
 - Ubuntu 20.04
 - Apache 2.4
 - MySQL 5.8
-- PHP 8.0
-- Node.js 12.x (with NPM)
+- PHP 8.1
+- Node.js 14.x (with NPM)
 
 ### Additionally installed:
 
@@ -33,4 +33,4 @@ After setup is finished, go to http://192.168.33.10/ in your browser. You should
 
 `phpMyAdmin` is accessible at http://192.168.33.10/phpmyadmin/ Username is 'root', password - '12345678'
 
-*tested on Mac OS X 12.1 (Monterey) with VirtualBox v6.1.30 and Vagrant 2.2.19
+*tested on Mac OS X 12.4 (Monterey) with VirtualBox v6.1.30 and Vagrant 2.2.19

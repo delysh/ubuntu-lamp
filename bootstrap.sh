@@ -25,6 +25,8 @@ echo "<?php phpinfo(); ?>" > /var/www/html/${HOMEDIRFOLDER}/index.php
 # install PPA 'ondrej/php'. The PPA is well known, and is relatively safe to use.
 sudo apt-get install -y software-properties-common
 sudo add-apt-repository -y ppa:ondrej/php
+# install PPA maintained by phpMyAdmin team members for newer version of phpMyAdmin (doesn't always work).
+#sudo add-apt-repository -y ppa:phpmyadmin/ppa
 
 # update / upgrade
 sudo apt -y update
@@ -90,7 +92,7 @@ curl -sS https://getcomposer.org/installer |php
 sudo mv composer.phar /usr/local/bin/composer
 
 # install NodeJS and NPM
-curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 # install yarn
