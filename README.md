@@ -12,7 +12,7 @@ Simple LAMP environment inside Vagrant box. Based on official `ubuntu/focal64` b
 
 ### Additionally installed:
 
-- phpMyAdmin
+- phpMyAdmin 5.2.0
 - Git
 - Composer
 - Yarn
@@ -31,6 +31,6 @@ Assuming that VirtualBox (https://www.virtualbox.org/) and Vagrant (https://www.
 After setup is finished, go to http://192.168.33.10/ in your browser. You should see the `phpinfo()` page.
 `./www/`(or `/vagrant/www/` inside the box) is your "DocumentRoot". I recommend keeping your projects in the `projects/` folder and make symlinks from `www/` to `public_html` folder of your project. But it’s up to you.
 
-`phpMyAdmin` is accessible at http://192.168.33.10/phpmyadmin/ Username is 'root', password - '12345678'
+`phpMyAdmin` is accessible at http://192.168.33.10/phpMyAdmin/ Username is 'root', password - '12345678'
 
-*tested on Mac OS X 12.4 (Monterey) with VirtualBox v6.1.30 and Vagrant 2.2.19
+*tested on Mac OS X 12.6.1 (Monterey) with VirtualBox v6.1.30 and Vagrant 2.2.19

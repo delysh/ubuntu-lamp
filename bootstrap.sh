@@ -25,8 +25,6 @@ echo "<?php phpinfo(); ?>" > /var/www/html/${HOMEDIRFOLDER}/index.php
 # install PPA 'ondrej/php'. The PPA is well known, and is relatively safe to use.
 sudo apt-get install -y software-properties-common
 sudo add-apt-repository -y ppa:ondrej/php
-# install PPA maintained by phpMyAdmin team members for newer version of phpMyAdmin (doesn't always work).
-#sudo add-apt-repository -y ppa:phpmyadmin/ppa
 
 # update / upgrade
 sudo apt -y update
@@ -60,7 +58,15 @@ echo "INSTALLING MySQL"
 sudo apt install -y mysql-server
 
 echo "INSTALLING PHPMyAdmin"
-sudo apt install -y phpmyadmin
+# install phpMyAdmin
+if [ ! -d "/usr/share/phpMyAdmin-5.2.0-english" ]; then
+  curl -o /tmp/phpMyAdmin-5.2.0-english.tar.gz https://files.phpmyadmin.net/phpMyAdmin/5.2.0/phpMyAdmin-5.2.0-english.tar.gz
+
+	tar -xzvf /tmp/phpMyAdmin-5.2.0-english.tar.gz -C /usr/share
+
+	rm -f /var/www/html/${HOMEDIRFOLDER}/phpMyAdmin && ln -s /usr/share/phpMyAdmin-5.2.0-english/ /var/www/html/${HOMEDIRFOLDER}/phpMyAdmin
+	rm -f /tmp/phpMyAdmin-5.2.0-english.tar.gz
+fi
 
 # setup hosts file
 VHOST=$(cat <<EOF
